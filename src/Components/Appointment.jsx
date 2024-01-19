@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Appointment = () => {
     const [age, setAge] = useState("");
@@ -18,7 +19,7 @@ const Appointment = () => {
     }; 
 
   return (
-    <div>
+    <div className="bg-appointment">
       <div className="mx-auto max-w-7xl px-4">
       
         <div className="mx-auto max-w-7xl py-12 md:py-24">
@@ -46,6 +47,7 @@ const Appointment = () => {
                         type="text"
                         id="name"
                         placeholder="Name"
+                        required
                       />
                     </div>
                     <div className="grid w-full  items-center gap-1.5">
@@ -60,6 +62,7 @@ const Appointment = () => {
                       type="tel"
                       id="phone_number"
                       placeholder="Phone number"
+                      required
                     />
                   </div>
                   </div>
@@ -77,6 +80,7 @@ const Appointment = () => {
                         placeholder="Age"
                         value={age}
                         onChange={handleAgeChange}
+                        required
                       />
                   </div>
                   <div className="grid w-full  items-center gap-1.5">
@@ -91,6 +95,7 @@ const Appointment = () => {
                         type="text"
                         id="city"
                         placeholder="City"
+                        required
                       />
                     </div>
                     <div className="grid w-full  items-center gap-1.5">
@@ -132,18 +137,19 @@ const Appointment = () => {
                     <input type="checkbox" name=""  id="previousExperience" />
                   </div>
                          )}
-                  <button
-                    type="button"
-                    className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                         <br />
+                  <Link
+                  to="/thankyou"
+                    className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     Book Appointment
-                  </button>
+                  </Link>
                 </form>
               </div>
             </div>
             <img
               alt="Contact us"
-              className="hidden max-h-full w-full rounded-lg object-cover lg:block"
+              className="invert hidden max-h-full w-full rounded-lg object-cover lg:block"
               src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&h=800&q=80"
             />
           </div>

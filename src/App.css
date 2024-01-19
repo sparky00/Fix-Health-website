@@ -15,4 +15,12 @@
   background-image: url(../src/assets/Images/header.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
+  filter: invert(1);
+}
+
+.bg-appointment{
+  background-image: url(../src/assets/Images/header.jpg);
+  background-repeat: no-repeat;
+	background-size: cover;
+  filter: invert(1);
 }
