@@ -1,50 +1,46 @@
 import React, { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Appointment = () => {
-    
-    const [name, setName] = useState("");
+  const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [city, setCity] = useState("");
   const [company, setCompany] = useState("");
   const [chiefComplaints, setChiefComplaints] = useState("");
-    const [showExperienceCheckbox, setShowExperienceCheckbox] = useState(true);
+  const [previousExperience, setPreviousExperience] = useState(false);
+  const [showExperienceCheckbox, setShowExperienceCheckbox] = useState(true);
   const navigate = useNavigate();
 
+  const handleAgeChange = (e) => {
+    const newAge = e.target.value;
+    setAge(newAge);
 
-    const handleAgeChange = (e) => {
-      const newAge = e.target.value;
-      setAge(newAge);
-  
-      // Check if age is less than 40 and update visibility of the checkbox
-      setShowExperienceCheckbox(parseInt(newAge, 10) >= 40);
-    };
-  
-    const handleSubmit = () => {
-      const formDetails = {
-        name,
-        phone,
-        age,
-        city,
-        company,
-        chiefComplaints,
-        previousExperience,
-      };
-    
-      // Log form details to the console (replace with your logic)
-      console.log("Form Details:", formDetails);
-    
-      // Redirect to the "/thankyou" route with form details as state
-      navigate("/thankyou");
-    };
-    
+    // Check if age is less than 40 and update visibility of the checkbox
+    setShowExperienceCheckbox(parseInt(newAge, 10) >= 40);
+  };
 
+  const handleSubmit = () => {
+    const formDetails = {
+      name,
+      phone,
+      age,
+      city,
+      company,
+      chiefComplaints,
+      previousExperience,
+    };
+
+    // Log form details to the console (replace with your logic)
+    console.log("Form Details:", formDetails);
+
+    // Redirect to the "/thankyou" route with form details as state
+    navigate("/thankyou");
+  };
 
   return (
     <div className="bg-appointment">
       <div className="mx-auto max-w-7xl px-4">
-      
         <div className="mx-auto max-w-7xl py-12 md:py-24">
           <div className="grid items-center justify-items-center gap-x-4 gap-y-10 lg:grid-cols-2">
             {/* contact from */}
@@ -54,7 +50,7 @@ const Appointment = () => {
                   Book an Appointment for FREE
                 </p>
                 <p className="mt-4 text-lg text-gray-600">
-                60+ Expert Physiotherapists for 200+ Conditions
+                  60+ Expert Physiotherapists for 200+ Conditions
                 </p>
                 <form onSubmit={handleSubmit} className="mt-8 space-y-4">
                   <div className="grid w-full gap-y-4 md:gap-x-4 lg:grid-cols-2">
@@ -76,22 +72,22 @@ const Appointment = () => {
                       />
                     </div>
                     <div className="grid w-full  items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="phone_number"
-                    >
-                      Phone number
-                    </label>
-                    <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      type="tel"
-                      id="phone"
-                      placeholder="Phone number"
-                      value={phone}
+                      <label
+                        className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        htmlFor="phone_number"
+                      >
+                        Phone number
+                      </label>
+                      <input
+                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                        type="tel"
+                        id="phone"
+                        placeholder="Phone number"
+                        value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                      required
-                    />
-                  </div>
+                        required
+                      />
+                    </div>
                   </div>
                   <div className="grid w-full  items-center gap-1.5">
                     <label
@@ -101,54 +97,54 @@ const Appointment = () => {
                       Age
                     </label>
                     <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                        type="number"
-                        id="age"
-                        placeholder="Age"
-                        value={age}
-                        onChange={handleAgeChange}
-                        required
-                      />
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      type="number"
+                      id="age"
+                      placeholder="Age"
+                      value={age}
+                      onChange={handleAgeChange}
+                      required
+                    />
                   </div>
                   <div className="grid w-full  items-center gap-1.5">
-                      <label
-                        className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="city"
-                      >
-                        City
-                      </label>
-                      <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                        type="text"
-                        id="city"
-                        placeholder="City"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="grid w-full  items-center gap-1.5">
-                      <label
-                        className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="company"
-                      >
-                        Company
-                      </label>
-                      <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                        type="text"
-                        id="company"
-                        placeholder="Company"
-                        value={company}
-                        onChange={(e) => setCompany(e.target.value)}
-                      />
-                    </div>
+                    <label
+                      className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      htmlFor="city"
+                    >
+                      City
+                    </label>
+                    <input
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      type="text"
+                      id="city"
+                      placeholder="City"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="grid w-full  items-center gap-1.5">
+                    <label
+                      className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      htmlFor="company"
+                    >
+                      Company
+                    </label>
+                    <input
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      type="text"
+                      id="company"
+                      placeholder="Company"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                    />
+                  </div>
                   <div className="grid w-full  items-center gap-1.5">
                     <label
                       className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                       htmlFor="message"
                     >
-                     Chief complaints
+                      Chief complaints
                     </label>
                     <textarea
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
@@ -156,24 +152,30 @@ const Appointment = () => {
                       placeholder="Your complaints"
                       value={chiefComplaints}
                       onChange={(e) => setChiefComplaints(e.target.value)}
-
                       cols={3}
                     />
                   </div>
                   {showExperienceCheckbox && (
-                  <div>
-                  <label
-                      htmlFor="previous_exp"
-                      className="mx-2 text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Previous experience with physiotherapy
-                    </label>
-                    <input type="checkbox" name=""  id="previousExperience" />
-                  </div>
-                         )}
-                         <br />
+                    <div>
+                      <label
+                        htmlFor="previous_exp"
+                        className="mx-2 text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Previous experience with physiotherapy
+                      </label>
+                      <input
+                        type="checkbox"
+                        id="previousExperience"
+                        checked={previousExperience}
+                        onChange={(e) =>
+                          setPreviousExperience(e.target.checked)
+                        }
+                      />
+                    </div>
+                  )}
+                  <br />
                   <button
-                  type="submit"
+                    type="submit"
                     className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     Book Appointment
