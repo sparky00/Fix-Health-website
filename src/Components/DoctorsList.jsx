@@ -3,6 +3,7 @@ import { Menu, X, Check } from 'lucide-react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 const faqs = [
   [
     {
@@ -46,16 +47,16 @@ const DoctorsList=({city})=> {
     
 
     useEffect(()=>{
-        axios.get("https://dummyapi.online/api/users")
+        axios.get("https://doctor-list.free.mockoapp.net/client/user")
         .then(res=> setDoctors(res.data));
     },[])
       console.log(doctors)
 
       const filteredDoctors = city
       ? doctors.filter((doctor) =>
-          doctor.address &&
-          doctor.address.city &&
-          doctor.address.city.toLowerCase() === city.toLowerCase()
+          doctor &&
+          doctor.city &&
+          doctor.city.toLowerCase() === city.toLowerCase()
         )
       : doctors;
 
@@ -79,10 +80,10 @@ const DoctorsList=({city})=> {
         {filteredDoctors.map((doctor) => (
           <div key={doctor.id} className="card bg-white shadow-md rounded-2xl border border-gray-200 h-full">
             <div className="card-header px-8 pt-10">
-              <p className="text-3xl font-bold leading-10">Dr. {doctor.name}</p>
-              <p className="text-xl font-semibold leading-loose text-gray-900">MBBS</p>
+              <p className="text-3xl font-bold leading-10">{doctor.name}</p>
+              <p className="text-xl font-semibold leading-loose text-gray-900">{doctor.degree}</p>
               <p className="text-base leading-normal text-gray-600">
-                {doctor.address.city}, {doctor.address.state}
+                {doctor.city}, {doctor.country}
               </p>
             </div>
             <div className="card-body px-8 pt-8 flex items-center justify-center rounded-full bg-gray-100 py-1">
@@ -90,12 +91,12 @@ const DoctorsList=({city})=> {
             </div>
             <br />
             <div className="card-footer px-8 pb-8">
-              <button
-                type="button"
+              <Link
+                to="/thankyou"
                 className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 Book Appointment
-              </button>
+              </Link>
             </div>
           </div>
         ))}

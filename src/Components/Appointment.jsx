@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 const Appointment = () => {
-    const [age, setAge] = useState("");
+    
+    const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [age, setAge] = useState("");
+  const [city, setCity] = useState("");
+  const [company, setCompany] = useState("");
+  const [chiefComplaints, setChiefComplaints] = useState("");
     const [showExperienceCheckbox, setShowExperienceCheckbox] = useState(true);
-  
+  const navigate = useNavigate();
+
+
     const handleAgeChange = (e) => {
       const newAge = e.target.value;
       setAge(newAge);
@@ -14,9 +22,24 @@ const Appointment = () => {
     };
   
     const handleSubmit = () => {
-      // Your form submission logic goes here
-      console.log("Form submitted");
-    }; 
+      const formDetails = {
+        name,
+        phone,
+        age,
+        city,
+        company,
+        chiefComplaints,
+        previousExperience,
+      };
+    
+      // Log form details to the console (replace with your logic)
+      console.log("Form Details:", formDetails);
+    
+      // Redirect to the "/thankyou" route with form details as state
+      navigate("/thankyou");
+    };
+    
+
 
   return (
     <div className="bg-appointment">
@@ -48,6 +71,8 @@ const Appointment = () => {
                         id="name"
                         placeholder="Name"
                         required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                     <div className="grid w-full  items-center gap-1.5">
@@ -60,8 +85,10 @@ const Appointment = () => {
                     <input
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                       type="tel"
-                      id="phone_number"
+                      id="phone"
                       placeholder="Phone number"
+                      value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                       required
                     />
                   </div>
@@ -95,6 +122,8 @@ const Appointment = () => {
                         type="text"
                         id="city"
                         placeholder="City"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
                         required
                       />
                     </div>
@@ -110,6 +139,8 @@ const Appointment = () => {
                         type="text"
                         id="company"
                         placeholder="Company"
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
                       />
                     </div>
                   <div className="grid w-full  items-center gap-1.5">
@@ -121,8 +152,11 @@ const Appointment = () => {
                     </label>
                     <textarea
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      id="message"
+                      id="chiefComplaints"
                       placeholder="Your complaints"
+                      value={chiefComplaints}
+                      onChange={(e) => setChiefComplaints(e.target.value)}
+
                       cols={3}
                     />
                   </div>
@@ -138,12 +172,12 @@ const Appointment = () => {
                   </div>
                          )}
                          <br />
-                  <Link
-                  to="/thankyou"
+                  <button
+                  type="submit"
                     className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     Book Appointment
-                  </Link>
+                  </button>
                 </form>
               </div>
             </div>

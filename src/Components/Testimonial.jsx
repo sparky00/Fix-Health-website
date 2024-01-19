@@ -3,29 +3,29 @@ import React from "react";
 const faqs = [
   [
     {
-      name: "Emily Thompson",
+      name: "Akshay Sharma",
       answer:
         "Physiotherapy has been a game-changer for me, and this team made it simple and effective. Grateful for their expertise!",
     },
     {
-      name: "Alex Rodriguez",
+      name: "Vikram Singh",
       answer:
         "Transparent pricing, compassionate care. My recovery journey with physio treatment became much smoother. Thank you all!",
     },
     {
-      name: "Linda Chen",
+      name: "Ananya Reddy",
       answer:
         "Exceptional service and clear pricing. The teams dedication helped me regain strength and confidence",
     },
   ],
   [
     {
-      name: "David Miller",
+      name: "Rajat Kapoor",
       answer:
         "I appreciate the straightforward pricing structure. The simplicity combined with top-notch care made my physiotherapy experience excellent.",
     },
     {
-      name: "Sophie Bennett",
+      name: "Sneha Verma",
       answer:
         "From day one, I felt supported. The pricing was clear, and the results exceeded my expectations. Thank you for the exceptional care!",
     },
